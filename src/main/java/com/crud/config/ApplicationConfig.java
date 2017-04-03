@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import com.mongodb.MongoClient;
 
 @Configuration
-@ComponentScan(basePackages = "com.crud.controller")
+@ComponentScan(basePackages = "com.crud")
 public class ApplicationConfig {
  
     @Bean
