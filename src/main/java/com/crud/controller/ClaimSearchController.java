@@ -19,16 +19,26 @@ public class ClaimSearchController {
 	IClaimSearch iClaimSearch;
 	
 	@RequestMapping(value="/claimSearch", method= RequestMethod.GET)
-	public List<ClaimSearchModel> searchClaim(@RequestParam("recoverId") String recoverId,@RequestParam("claimNumber") String claimNumber,
-			@RequestParam("insuredName") String insuredName,@RequestParam("locationCode") int locationCode){
+	public List<ClaimSearchModel> searchClaim(@RequestParam("recoverId") String recoverId, @RequestParam("claimNumber") String claimNumber){
 		
 		ClaimSearchModel claimSearchModel = new ClaimSearchModel();
 		claimSearchModel.setRecoverId(recoverId);
 		claimSearchModel.setClaimNumber(claimNumber);
-		claimSearchModel.setInsuredName(insuredName);
-		claimSearchModel.setLocationCode(locationCode);
+		/*claimSearchModel.setInsuredName(insuredName);
+		claimSearchModel.setLocationCode(locationCode);*/
 		
 		List<ClaimSearchModel> claimSearchResultList = iClaimSearch.searchClaim(claimSearchModel);	
+		System.out.println("claimSearchResultList "+claimSearchResultList);
+		return claimSearchResultList;
+	}
+	
+	@RequestMapping(value="/claimDetails", method= RequestMethod.GET)
+	public List<ClaimSearchModel> claimDetails(@RequestParam("recoverId") String recoverId){
+		
+		ClaimSearchModel claimSearchModel = new ClaimSearchModel();
+		claimSearchModel.setRecoverId(recoverId);
+			
+		List<ClaimSearchModel> claimSearchResultList = iClaimSearch.searchClaimDetails(claimSearchModel);	
 		System.out.println("claimSearchResultList "+claimSearchResultList);
 		return claimSearchResultList;
 	}
