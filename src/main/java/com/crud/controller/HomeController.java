@@ -8,6 +8,8 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crud.bean.Car;
+import com.crud.bean.ClaimRegisterModel;
+import com.crud.config.ApplicationConfig;
 import com.crud.service.CarService;
+import com.crud.service.ICliamRegister;
 
 /**
  * Handles requests for the application home page.
@@ -24,7 +29,7 @@ import com.crud.service.CarService;
 @RestController
 public class HomeController {
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);	
 	@Autowired
 	CarService carService;
 
