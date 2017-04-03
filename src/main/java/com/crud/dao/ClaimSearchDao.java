@@ -12,7 +12,8 @@ import org.springframework.stereotype.Service;
 import com.crud.bean.ClaimSearchModel;
 import com.crud.service.IClaimSearch;
 
-@Service("claimSearch")
+/*@Service("claimSearch")*/
+@Service
 @Repository
 public class ClaimSearchDao implements IClaimSearch {
 
@@ -21,6 +22,15 @@ public class ClaimSearchDao implements IClaimSearch {
 
 	@Override
 	public List<ClaimSearchModel> searchClaim(ClaimSearchModel claimSearchModel) {
+		Criteria criteria = new Criteria();
+		Query query = new Query(criteria.orOperator(Criteria.where("recoverId").is(claimSearchModel.getRecoverId()), Criteria.where("claimNumber").is(claimSearchModel.getClaimNumber())));
+		return mongoTemplate.find(query, ClaimSearchModel.class,"claim_register");
+	}
+
+	@Override
+	public List<ClaimSearchModel> searchClaimDetails(ClaimSearchModel claimSearchModel) {
+		/*Query query = new Query(Criteria.where("recoverId").is(claimSearchModel.getRecoverId()).orOperator(Criteria.where("claimNumber").is(claimSearchModel.getClaimNumber())).orOperator(Criteria.where("insuredName").is(claimSearchModel.getInsuredName())));*/
+		Criteria criteria = new Criteria();
 		Query query = new Query(Criteria.where("recoverId").is(claimSearchModel.getRecoverId()));
 		return mongoTemplate.find(query, ClaimSearchModel.class,"claim_register");
 	}
