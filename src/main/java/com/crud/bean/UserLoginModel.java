@@ -3,7 +3,7 @@ package com.crud.bean;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="user_register")
+@Document(collection="register_user")
 public class UserLoginModel {
 	@Id
 	private String id;

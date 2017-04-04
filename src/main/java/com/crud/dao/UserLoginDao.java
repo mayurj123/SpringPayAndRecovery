@@ -21,9 +21,11 @@ public class UserLoginDao implements IUserLogin {
 	public boolean checkUser(UserLoginModel userLoginModel) {
 		// TODO Auto-generated method stub
 		Criteria criteria = new Criteria();
-		Query query = new Query(criteria.andOperator(Criteria.where("emailid").is(userLoginModel.getEmailid()), Criteria.where("password").is(userLoginModel.getPassword())));
-		List<UserLoginModel> li = mongoTemplate.find(query, UserLoginModel.class,"user_register");
+		Query query = new Query(criteria.orOperator(Criteria.where("emailid").is(userLoginModel.getEmailid()), Criteria.where("password").is(userLoginModel.getPassword())));
+		/*Query query = new Query(Criteria.where("emailid").is(userLoginModel.getEmailid()));*/
+		List<UserLoginModel> li = mongoTemplate.find(query, UserLoginModel.class,"register_user");
 		
+		System.out.println("li "+li);
 		if(li.size()>0){
 			return true;
 		}
