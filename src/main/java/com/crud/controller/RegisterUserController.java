@@ -18,13 +18,15 @@ public class RegisterUserController {
 	
 	@RequestMapping(value="/registeruser", method= RequestMethod.POST)
 	public @ResponseBody String userreg(@RequestParam("userid")String userid,@RequestParam("fname")String fname,
-										@RequestParam("lname")String lname,@RequestParam("emailid")String emailid) throws Exception{
+										@RequestParam("lname")String lname,@RequestParam("emailid")String emailid, 
+										@RequestParam("password")String password) throws Exception{
 		
 		RegisterUserModel registerusermodel=new RegisterUserModel();
 		registerusermodel.setUserid(userid);
 		registerusermodel.setFname(fname);
 		registerusermodel.setLname(lname);
 		registerusermodel.setEmailid(emailid);
+		registerusermodel.setPassword(password);
 		
 		iRegisterUser.registeruser(registerusermodel);
 		
