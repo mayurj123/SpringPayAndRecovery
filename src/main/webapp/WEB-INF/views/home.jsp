@@ -11,10 +11,10 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 
-
-<form action ="" method = "POST">
-	Brand : <input type="text" name ="brand">
-	Model : <input type="text" name ="model">
+<c:url var="login" value="/login"></c:url>
+<form action ="${login}" method = "GET">
+	Email ID : <input type="text" name ="emailid">
+	Password : <input type="text" name ="password">
 	<input type="Submit" value ="Submit">
 </form>
 

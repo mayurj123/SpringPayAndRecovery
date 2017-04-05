@@ -3,13 +3,21 @@ package com.crud.bean;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 @Document(collection="register_user")
 public class RegisterUserModel {
 
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	@Id
 	private String userid;
 	private String fname;
 	private String lname;
+	
 	private String emailid;
 	private String password;
 	
