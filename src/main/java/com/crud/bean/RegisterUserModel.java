@@ -6,33 +6,25 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="register_user")
 public class RegisterUserModel {
-
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	@Id
-	private String userid;
+	private String emailid;
 	private String fname;
 	private String lname;
-	
-	private String emailid;
+	private String role;
 	private String password;
 	
 	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public String getUserid() {
-		return userid;
-	}
-	public void setUserid(String userid) {
-		this.userid = userid;
 	}
 	public String getFname() {
 		return fname;
