@@ -1,19 +1,28 @@
 package com.crud.bean;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Document(collection="register_user")
 public class RegisterUserModel {
 	@Id
+	private String id;
+
+	@Indexed(unique=true)
 	private String emailid;
 	private String fname;
 	private String lname;
 	private String role;
 	private String password;
 	
-	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getRole() {
 		return role;
 	}
