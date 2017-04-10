@@ -34,7 +34,12 @@ public class UserLoginAuthenticationController {
 		boolean re = iUserLogin.checkUser(userLoginModel);
 		if (re) {
 			HttpSession session = request.getSession();
-			session.setAttribute("emailid", request.getParameter("emailid"));
+			String activeSession = (String) session.getAttribute("emailid");
+			if (activeSession == null) {
+				session.setAttribute("emailid", request.getParameter("emailid"));
+			} else {
+				return "User Already Logged In, Please logout first!";
+			}
 			logger.info("User Logged In Sucessfully");
 			return "User Logged In";
 		} else {
