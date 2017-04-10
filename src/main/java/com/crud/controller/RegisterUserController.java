@@ -30,9 +30,13 @@ public class RegisterUserController {
 		registerusermodel.setPassword(password);
 		
 		
-		iRegisterUser.registeruser(registerusermodel);
+		boolean re=iRegisterUser.registeruser(registerusermodel);
+		if(re){
+			return "User registered Successfully";
+		}else{
+			return "Email Id Already Exists, Please try Another Email Id";
+		}
 		
-		return "In controller user registered";
 		
 	}
 

@@ -14,10 +14,15 @@ public class RegisterUserDAO implements IRegisterUser {
 	MongoTemplate mongoTemplate;
 	
 	@Override
-	public String registeruser(RegisterUserModel reguser) {
+	public boolean registeruser(RegisterUserModel reguser) {
 		
+		try{
 		mongoTemplate.insert(reguser,"register_user");
-		return "inserted successfully";
+		}catch(Exception e){
+			System.out.println("Sorry User Name Already Exist");
+			return false;
+		}
+		return true;
 	}
 
 	
