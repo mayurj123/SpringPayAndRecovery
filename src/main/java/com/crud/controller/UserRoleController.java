@@ -26,7 +26,6 @@ public class UserRoleController {
 	public @ResponseBody String checkUserRoles(HttpServletRequest request) {
 
 		UserRoleModel userRoleModel = new UserRoleModel();
-		RegisterUserModel registerUserModel = new RegisterUserModel();
 		String userLoggedIn = null;
 		HttpSession session = request.getSession(false);
 		try {
@@ -36,22 +35,27 @@ public class UserRoleController {
 			System.out.println("Please Login First to maintain Sesstion " + e);
 			return "Please Login First to maintain Sesstion ";
 		}
-		registerUserModel = iUserRoleService.checkUserRole(userRoleModel);
-		
-		String userRole = null;
-		if (registerUserModel.getRole().contains("admin")) {
-			userRole = registerUserModel.getRole();
-			
-		} else if (registerUserModel.getRole().contains("tpclaim")) {
-			userRole = registerUserModel.getRole();
-			
-		} else if (registerUserModel.getRole().contains("verticalhead")) {
-			userRole = registerUserModel.getRole();
-			System.out.println("Role verticalhead");
-		} else if (registerUserModel.getRole().contains("vendor")) {
-			userRole = registerUserModel.getRole();	
-		}
-		return "User Role is " + userRole;
+		userRoleModel = iUserRoleService.checkUserRole(userRoleModel);
 
+		String userRole = null;
+		try {
+			if (userRoleModel.getRole().contains("admin")) {
+				userRole = userRoleModel.getRole();
+
+			} else if (userRoleModel.getRole().contains("tpclaim")) {
+				userRole = userRoleModel.getRole();
+
+			} else if (userRoleModel.getRole().contains("verticalhead")) {
+				userRole = userRoleModel.getRole();
+				System.out.println("Role verticalhead");
+			} else if (userRoleModel.getRole().contains("vendor")) {
+				userRole = userRoleModel.getRole();
+			}
+			return "User Role is " + userRole;
+		} catch (Exception e) {
+			System.out.println("Exception Occured in user role Controller");
+			return "Exception Occured in user role Controller";
+		}
+		
 	}
 }

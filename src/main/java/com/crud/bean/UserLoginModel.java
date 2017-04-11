@@ -9,13 +9,7 @@ public class UserLoginModel {
 	private String id;
 	private String emailid;
 	private String password;
-	
-	public UserLoginModel(String sessionId) {
-		// TODO Auto-generated constructor stub
-	}
-	public UserLoginModel() {
-		// TODO Auto-generated constructor stub
-	}
+
 	public String getId() {
 		return id;
 	}
