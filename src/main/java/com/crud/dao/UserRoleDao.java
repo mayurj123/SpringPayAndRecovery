@@ -16,11 +16,15 @@ public class UserRoleDao implements IUserRoleService {
 	@Autowired
 	MongoTemplate mongoTemplate;
 
-	@Override
-	public RegisterUserModel checkUserRole(UserRoleModel userRoleModel) {
-		// TODO Auto-generated method stub
+	public UserRoleModel checkUserRole(UserRoleModel userRoleModel) {
+		try{
 		Query query = new Query(Criteria.where("emailid").is(userRoleModel.getUserLoggedIn()));
-	/*	query.fields().include("role");*/
-		return mongoTemplate.findOne(query, RegisterUserModel.class,"register_user");
+		/* query.fields().include("role"); */
+		return mongoTemplate.findOne(query, UserRoleModel.class, "register_user");
+		}catch(Exception e){
+			System.out.println("Exception Occured in user role dao " +e);
+			return null;
+		}
+		
 	}
 }

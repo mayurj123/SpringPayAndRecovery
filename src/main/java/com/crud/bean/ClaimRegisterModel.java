@@ -1,15 +1,22 @@
 package com.crud.bean;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "claim_register")
 public class ClaimRegisterModel {
 	@Id
 	private String id;
+	
+	@Indexed(unique=true)
 	String recoverId;
+	
+	@Indexed(unique=true)
 	String claimNumber;
+	@Indexed(unique=true)
 	String policyNumber;
+	
 	int locationCode;
 	long totalAmountPaid;
 	String insuredAddress;
